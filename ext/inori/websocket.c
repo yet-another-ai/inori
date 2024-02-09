@@ -3,7 +3,7 @@
 
 VALUE Inori = Qnil;
 VALUE InoriException = Qnil;
-VALUE InoriWebSocket = Qnil;
+VALUE InoriWebsocket = Qnil;
 
 VALUE ContinousFrameException = Qnil;
 VALUE OpCodeException = Qnil;
@@ -15,12 +15,12 @@ VALUE method_inori_websocket_decode(VALUE self, VALUE data);
 void Init_inori_ext()
 {
   Inori = rb_define_module("Inori");
-  InoriWebSocket = rb_define_class_under(Inori, "WebSocket", rb_cObject);
+  InoriWebsocket = rb_define_class_under(Inori, "Websocket", rb_cObject);
   InoriException = rb_define_module_under(Inori, "Exception");
   ContinousFrameException = rb_const_get(InoriException, rb_intern("ContinuousFrame"));
   OpCodeException = rb_const_get(InoriException, rb_intern("OpCodeError"));
   NotMaskedException = rb_const_get(InoriException, rb_intern("NotMasked"));
-  rb_define_method(InoriWebSocket, "decode", method_inori_websocket_decode, 1);
+  rb_define_method(InoriWebsocket, "decode", method_inori_websocket_decode, 1);
 }
 
 VALUE method_inori_websocket_decode(VALUE self, VALUE data)

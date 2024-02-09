@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ##
 # Meta-programming Kernel for Syntactic Sugars
 module Kernel
@@ -17,7 +19,7 @@ module Kernel
   # @param [Array<Symbol>] args names to be defined
   # @return [nil] nil
   # @example
-  #   define_error(:foo_error, :bar_error) 
+  #   define_error(:foo_error, :bar_error)
   #   => nil, FooError < StandardError and BarError < StandardError would be defined
   def define_error(*args)
     args.each do |arg|

@@ -1,30 +1,32 @@
+# frozen_string_literal: true
+
 require './spec/spec_helper'
 
 RSpec.describe HTTPHeader do
   describe 'HTTPHeader' do
-    it 'should turn strings and symbols downcase' do
-      hash = HTTPHeader.new
+    it 'turns strings and symbols downcase' do
+      hash = described_class.new
       hash['A'] = 1
       hash[:A] = 2
       expect(hash.keys).to eq(['a', :a])
     end
 
-    it 'should respond hash key in any case' do
-      hash = HTTPHeader.new
+    it 'responds hash key in any case' do
+      hash = described_class.new
       hash['A'] = 1
       hash[:A] = 2
-      expect(hash.key?('a')).to eq(true)
-      expect(hash.key?(:a)).to eq(true)
-      expect(hash.key?('A')).to eq(true)
-      expect(hash.key?(:A)).to eq(true)
+      expect(hash.key?('a')).to be(true)
+      expect(hash.key?(:a)).to be(true)
+      expect(hash.key?('A')).to be(true)
+      expect(hash.key?(:A)).to be(true)
       expect(hash['A']).to eq(1)
       expect(hash['a']).to eq(1)
       expect(hash[:A]).to eq(2)
       expect(hash[:a]).to eq(2)
     end
 
-    it 'should not use keys other than string or symbol' do
-      hash = HTTPHeader.new
+    it 'does not use keys other than string or symbol' do
+      hash = described_class.new
       expect { hash[true] = 1 }.to raise_error(NoMethodError)
     end
   end

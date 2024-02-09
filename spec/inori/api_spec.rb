@@ -1,32 +1,41 @@
+# frozen_string_literal: true
+
 require './spec/spec_helper'
 require 'json'
 
-include Inori
-
-class User < API
+class User < Inori::API
   get '/' do
     'User'
   end
 end
 
-class RawHello < API
+class RawHello < Inori::API
   mount '/user', User
-  use Middleware
+  use Inori::Middleware
   get '/' do
     'Hello'
   end
-  post '/' do; end
-  put '/' do; end
-  delete '/' do; end
-  options '/' do; end
-  link '/' do; end
-  unlink '/' do; end
-  msearch '/' do; end
-  websocket '/' do; end
-  eventsource '/' do; end
+  post '/' do
+  end
+  put '/' do
+  end
+  delete '/' do
+  end
+  options '/' do
+  end
+  link '/' do
+  end
+  unlink '/' do
+  end
+  msearch '/' do
+  end
+  websocket '/' do
+  end
+  eventsource '/' do
+  end
 end
 
-class JSONMiddleware < Middleware
+class JSONMiddleware < Inori::Middleware
   def before(request)
     request.body = JSON.parse(request.body) unless request.body == ''
     request
@@ -40,9 +49,9 @@ class JSONMiddleware < Middleware
 end
 
 class JSONHello < Inori::API
-  use Middleware
+  use Inori::Middleware
   filter JSONMiddleware
   get '/' do
-    @body = {code: 0}
+    @body = { code: 0 }
   end
 end

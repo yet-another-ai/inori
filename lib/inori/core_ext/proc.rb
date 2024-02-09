@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ##
 # Meta-programming Proc for Syntactic Sugars
 class Proc

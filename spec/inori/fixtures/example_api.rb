@@ -1,10 +1,14 @@
-class Inori::Configure
-  set :logger, Logger.new(StringIO.new)
-  set :bind, '127.0.0.1'
-  set :port, 8080
-  set :keep_alive_timeout, 3
-  set :keep_alive_requests, 3
-  set :socket_reuse_port, true
+# frozen_string_literal: true
+
+module Inori
+  class Configure
+    set :logger, Logger.new(StringIO.new)
+    set :bind, '127.0.0.1'
+    set :port, 8080
+    set :keep_alive_timeout, 3
+    set :keep_alive_requests, 3
+    set :socket_reuse_port, true
+  end
 end
 
 class User < Inori::API
@@ -45,7 +49,7 @@ class ExampleAPI < Inori::API
   end
 
   get '/large' do
-    'w' * 2 ** 20
+    'w' * (2**20)
   end
 
   get '/stop' do
@@ -105,7 +109,8 @@ class ExampleAPI < Inori::API
     end
   end
 
-  websocket '/websocket/wrong_opcode' do |ws|;end
+  websocket '/websocket/wrong_opcode' do |ws|
+  end
 
   eventsource '/eventsource' do |es|
     es.send("Hello\nWorld")

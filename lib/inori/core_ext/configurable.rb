@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ##
 # Modified from Sinatra
 # Provide flexible configuration for Inori Server
@@ -20,14 +22,21 @@ module Configurable
     self
   end
 
+  private
+
   # Dynamically defines a method on settings.
   # @param [String] name method name
   # @param [Proc] content method content
   # @return [nil] nil
-  private def define_singleton(name, content = Proc.new)
+  def define_singleton(name, content = Proc.new)
     singleton_class.class_eval do
       undef_method(name) if method_defined? name
-      String === content ? class_eval("def #{name}() #{content}; end") : define_method(name, &content)
+      if content.is_a?(String)
+        class_eval("def #{name}() #{content}; end", __FILE__,
+                   __LINE__ - 1)
+      else
+        define_method(name, &content)
+      end
     end
   end
 end

@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 require 'cgi'
 require 'evt'
 require 'digest/sha1'
 require 'stringio'
-require 'fiber'
 require 'logger'
 require 'mizu'
 require 'mustermann'

@@ -1,23 +1,25 @@
+# frozen_string_literal: true
+
 require './spec/spec_helper'
 
 RSpec.describe Inori::Runner do
   describe 'Runner with default configure' do
-    subject { EXAMPLE_RUNNER }
+    let(:runner) { EXAMPLE_RUNNER }
 
-    after {
-      subject.stop
+    after do
+      runner.stop
       sleep 1
-    }
-
-    it 'should not stop before started' do
-      expect(subject.stop).to eq(false)
     end
 
-    it 'should start properly' do
+    it 'does not stop before started' do
+      expect(runner.stop).to be(false)
+    end
+
+    it 'starts properly' do
       expect do
-        Thread.new { subject.start }
+        Thread.new { runner.start }
         sleep 1
-      end.to_not raise_error(RuntimeError)
+      end.not_to raise_error(RuntimeError)
     end
   end
 end

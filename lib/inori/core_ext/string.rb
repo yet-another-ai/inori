@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ##
 # Meta-programming String for Syntactic Sugars
 class String
