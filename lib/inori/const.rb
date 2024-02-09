@@ -67,8 +67,6 @@ module Inori
       510 => '510 Not Extended', # RFC 2774
       511 => '511 Network Authentication Required' # RFC 6585
     }.freeze
-    STATUS_CODE.default = '500 Internal Server Error'
-    STATUS_CODE.freeze
 
     # Default header for Basic HTTP response
     DEFAULT_HEADER = {
