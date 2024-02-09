@@ -21,15 +21,12 @@ YARD::Rake::YardocTask.new do |t|
   t.stats_options = ['--list-undoc', 'markup-provider=kramdown']
 end
 
+desc 'Build Gem'
 task :build do
   puts `gem build inori.gemspec`
 end
 
-task :install do
-  puts `gem build inori.gemspec`
-  puts `gem install ./inori.rb-#{Inori::VERSION}.gem`
-end
-
+desc 'Line count'
 task :count do
   puts "Library line count:    #{`find ./lib -name "*.rb"|xargs cat|wc -l`}"
   puts "  Empty line count:    #{`find ./lib -name "*.rb"|xargs cat|grep -e "^$"|wc -l`}"

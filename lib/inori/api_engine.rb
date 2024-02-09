@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-##
-# Merge and manage all APIs.
-# @attr [Hash] routes A hash of all routes merged
 module Inori
+  ##
+  # Merge and manage all APIs.
+  # @attr [Hash] routes A hash of all routes merged
   class APIEngine
     attr_accessor :routes
 
@@ -14,12 +14,11 @@ module Inori
       @routes = {}
       Inori::Const::ROUTE_METHODS.map { |method| @routes[method] = [] }
       @root_api = root_api
-      @type = type
       @routes = merge('', root_api, [])
       @routes.delete :MOUNT
       @routes.each do |method|
         method[1].each do |route|
-          route.path = Mustermann.new(route.path, type:)
+          route.path = Mustermann.new(route.path, type: type)
         end
       end
     end

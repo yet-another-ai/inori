@@ -18,6 +18,7 @@ require_relative 'inori/core_ext/string'
 
 require_relative 'inori/version'
 
+require_relative 'inori/api_routes'
 require_relative 'inori/const'
 require_relative 'inori/exception'
 require_relative 'inori/env'

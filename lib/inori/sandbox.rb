@@ -37,8 +37,8 @@ module Inori
       # @param [Inori::CleanRoom] clean_room Clean room to run
       # @param [Proc] function the block to run
       # @return [nil] nil
-      def run(clean_room, function, *)
-        function.to_lambda(clean_room).call(*)
+      def run(clean_room, function, *args)
+        function.to_lambda(clean_room).call(*args)
       rescue StandardError => e
         capture(e)
       end
