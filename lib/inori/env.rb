@@ -3,7 +3,7 @@
 module Inori
   # @return [String] inori environment
   def self.env
-    (ENV['INORI_ENV'] || 'development').to_sym
+    ENV['INORI_ENV'].to_sym || :development
   end
 end
 
