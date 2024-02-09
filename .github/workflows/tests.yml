@@ -35,4 +35,5 @@ jobs:
           bundler-cache: true
       - name: rspec
         run: |
+          bundle exec rake compile
           bundle exec rspec
