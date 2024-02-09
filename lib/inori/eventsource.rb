@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-##
-# This class provides methods for EventSource connection instance.
-# @attr [Inori::Connection] connection the connection instance of EventMachine
 module Inori
+  ##
+  # This class provides methods for EventSource connection instance.
+  # @attr [Inori::Connection] connection the connection instance of EventMachine
   class EventSource
     attr_accessor :connection
 

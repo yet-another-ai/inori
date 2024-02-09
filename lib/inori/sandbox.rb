@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-##
-# Sandbox for global error capture
 module Inori
+  ##
+  # Sandbox for global error capture
   class Sandbox
     class << self
       def class_initialize

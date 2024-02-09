@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-##
-# Class for Inori route
-# @attr [String] method HTTP method
-# @attr [Regexp] path regex to match
-# @attr [Proc] function what to do after matched
-# @attr [Array<Class>] middlewares middlewares used in the route
 module Inori
+  ##
+  # Class for Inori route
+  # @attr [String] method HTTP method
+  # @attr [Regexp] path regex to match
+  # @attr [Proc] function what to do after matched
+  # @attr [Array<Class>] middlewares middlewares used in the route
   class Route
     attr_accessor :method, :path, :function, :middlewares
 

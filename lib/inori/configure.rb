@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-##
-# Default configuration of Inori, extends +Configurable+
 module Inori
+  ##
+  # Default configuration of Inori, extends +Configurable+
   class Configure
     extend Configurable
 

@@ -1,22 +1,22 @@
 # frozen_string_literal: true
 
-##
-# Request class for inori
-# @attr [String] ip client ip address
-# @attr [Integer] port client port
-# @attr [String] ip parsed ip address
-# @attr [String] protocol protocol version of HTTP request
-# @attr [Symbol] method HTTP method
-# @attr [String] path request path
-# @attr [Hash] query_params parameter parsed from query string
-# @attr [String | nil] query_string request query string
-# @attr [HTTPHeader] header request header
-# @attr [String] body request body
-# @attr [Hash] cookie cookie hash coming from request
-# @attr [Boolean] parsed whether the request header parsed
-# @attr [Boolean] body_parsed whether the request body parsed
-# @attr [Hash] params params in the url
 module Inori
+  ##
+  # Request class for inori
+  # @attr [String] ip client ip address
+  # @attr [Integer] port client port
+  # @attr [String] ip parsed ip address
+  # @attr [String] protocol protocol version of HTTP request
+  # @attr [Symbol] method HTTP method
+  # @attr [String] path request path
+  # @attr [Hash] query_params parameter parsed from query string
+  # @attr [String | nil] query_string request query string
+  # @attr [HTTPHeader] header request header
+  # @attr [String] body request body
+  # @attr [Hash] cookie cookie hash coming from request
+  # @attr [Boolean] parsed whether the request header parsed
+  # @attr [Boolean] body_parsed whether the request body parsed
+  # @attr [Hash] params params in the url
   class Request
     attr_accessor :ip, :port, :remote_ip,
                   :protocol, :method, :path, :query_params, :query_string,

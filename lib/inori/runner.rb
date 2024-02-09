@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-##
-# Abstract runner class to control instance of Inori Server
-# @attr [String] bind the address to bind
-# @attr [Integer] port the port to bind
-# @attr [Logger] logger inori logger
 module Inori
+  ##
+  # Abstract runner class to control instance of Inori Server
+  # @attr [String] bind the address to bind
+  # @attr [Integer] port the port to bind
+  # @attr [Logger] logger inori logger
   class Runner
     attr_reader :bind, :port, :logger
 

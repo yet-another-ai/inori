@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-##
-# This class is used to be sandbox of requests processing.
-# @attr [Integer] status HTTP response code
-# @attr [Hash] header HTTP response header
-# @attr [Object] body HTTP response body. String could is accepted by default, but could leave for further process with +Inori::Middleware+
-# @attr [Inori::Request] request HTTP request
 module Inori
+  ##
+  # This class is used to be sandbox of requests processing.
+  # @attr [Integer] status HTTP response code
+  # @attr [Hash] header HTTP response header
+  # @attr [Object] body HTTP response body. String could is accepted by default, but could leave for further process with +Inori::Middleware+
+  # @attr [Inori::Request] request HTTP request
   class CleanRoom
     attr_accessor :status, :header, :body, :request
 

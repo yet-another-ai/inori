@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+##
+# Add env method to Ironi root module
 module Inori
   # @return [String] inori environment
   def self.env
@@ -7,7 +9,9 @@ module Inori
   end
 end
 
-class String
+##
+# meta-programming symbol for env validation
+class Symbol
   # @return [TrueClass | FalseClass] if string is equal to production
   def production?
     self == :production

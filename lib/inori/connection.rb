@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-##
-# States of a connection
 module Inori
+  ##
+  # States of a connection
   class Connection
     include Inori::Server
 

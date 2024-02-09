@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-##
-# Class for inori response
-# @attr [String] status HTTP response status
-# @attr [Hash] header HTTP response header
-# @attr [String] body HTTP response body
 module Inori
+  ##
+  # Class for inori response
+  # @attr [String] status HTTP response status
+  # @attr [Hash] header HTTP response header
+  # @attr [String] body HTTP response body
   class Response
     attr_accessor :status, :header, :body
 

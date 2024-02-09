@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+##
+# Inject logger to Inori root module
 module Inori
   class << self
     # Return current logger inori is using

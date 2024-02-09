@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-##
-# This class provides methods for Websocket connection instance.
-# @attr [Array<Integer>, String] msg message send from client
-# @attr [Integer] opcode operation code of Websocket
-# @attr [Hash] events response for different event
-# @attr [Inori::Connection] connection raw EventMachine connection
-# @attr [Inori::Request] request raw request
 module Inori
+  ##
+  # This class provides methods for Websocket connection instance.
+  # @attr [Array<Integer>, String] msg message send from client
+  # @attr [Integer] opcode operation code of Websocket
+  # @attr [Hash] events response for different event
+  # @attr [Inori::Connection] connection raw EventMachine connection
+  # @attr [Inori::Request] request raw request
   class Websocket
     attr_accessor :msg, :opcode, :events, :connection, :request
 

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-##
-# Ancestor of all middlewares
 module Inori
+  ##
+  # Ancestor of all middlewares
   class Middleware
     # Init a middleware
     def initialize; end

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+##
+# meta-programming to support TCP Fast Open on macOS
 class Socket
   def tcp_fast_open
     # macOS devices option is DIFFERENT from Linux and FreeBSD

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-##
-# Logic to EventMachine TCP Server, running inside +Inori::Connection+
 module Inori
+  ##
+  # Logic of the Event-based TCP Server, running inside +Inori::Connection+
   module Server
     # @!attribute request
     #   @return [Inori::Request] raw request
