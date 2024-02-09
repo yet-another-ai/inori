@@ -23,6 +23,19 @@ module Inori
         nil
       end
 
+      # Add M-SEARCH method as a DSL for route definition
+      # @param [ String ] path Accepts as part of path in route definition
+      # @yield what to run when route matched
+      # @return [ nil ] nil
+      # @example String as router
+      #   msearch '/' do
+      #      puts 'Hello World'
+      #   end
+      def msearch(path, &block)
+        # Most of the routes has been added in `Inori::APIRoutes`, but not this one
+        add_route(:'M-SEARCH', path, block)
+      end
+
       # Mount a route prefix with another API defined
       # @param [String] prefix prefix of the route String
       # @param [Class] api inherited from Inori::API

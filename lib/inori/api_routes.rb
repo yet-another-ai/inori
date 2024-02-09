@@ -193,18 +193,6 @@ module Inori
     #   end
     def merge(path, &block) end
 
-    # Add M-SEARCH method as a DSL for route definition
-    # @param [ String ] path Accepts as part of path in route definition
-    # @yield what to run when route matched
-    # @return [ nil ] nil
-    # @example String as router
-    #   msearch '/' do
-    #      puts 'Hello World'
-    #   end
-    def msearch(path, &block)
-      add_route(:'M-SEARCH', path, block)
-    end
-
     # Add NOTIFY method as a DSL for route definition
     # @param [ String ] path Accepts as part of path in route definition
     # @yield what to run when route matched
