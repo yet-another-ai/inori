@@ -86,71 +86,71 @@ module Inori
           define_method(name, &block)
         end
       end
-    end
 
-    # Constants of supported methods in route definition
-    METHODS = %w[ delete
-                  get
-                  head
-                  post
-                  put
-                  connect
-                  options
-                  trace
-                  copy
-                  lock
-                  mkcol
-                  move
-                  propfind
-                  proppatch
-                  unlock
-                  report
-                  mkactivity
-                  checkout
-                  merge
-                  notify
-                  subscribe
-                  unsubscribe
-                  patch
-                  purge
-                  websocket
-                  eventsource].freeze
+      # Constants of supported methods in route definition
+      METHODS = %w[ delete
+                    get
+                    head
+                    post
+                    put
+                    connect
+                    options
+                    trace
+                    copy
+                    lock
+                    mkcol
+                    move
+                    propfind
+                    proppatch
+                    unlock
+                    report
+                    mkactivity
+                    checkout
+                    merge
+                    notify
+                    subscribe
+                    unsubscribe
+                    patch
+                    purge
+                    websocket
+                    eventsource].freeze
 
-    # Magics to fill DSL methods through dynamically class method definition
-    METHODS.each do |method|
-      define_singleton_method(method) do |*args, &block|
-        add_route(method.upcase.to_sym, args[0], block) # args[0]: path
+      # Magics to fill DSL methods through dynamically class method definition
+      METHODS.each do |method|
+        define_singleton_method(method) do |*args, &block|
+          add_route(method.upcase.to_sym, args[0], block) # args[0]: path
+        end
       end
-    end
 
-    singleton_class.send :alias_method, :ws, :websocket
-    singleton_class.send :alias_method, :es, :eventsource
+      singleton_class.send :alias_method, :ws, :websocket
+      singleton_class.send :alias_method, :es, :eventsource
 
-    private
+      private
 
-    def inherited(subclass)
-      super
+      def inherited(subclass)
+        super
 
-      subclass.class_initialize
-    end
+        subclass.class_initialize
+      end
 
-    # Implementation of route DSL
-    # @param [String] method HTTP method
-    # @param [String, Regexp] path path definition
-    # @param [Proc] block process to run when route matched
-    # @return [nil] nil
-    def add_route(method, path, block)
-      # Argument check
-      raise ArgumentError unless path.is_a? String
+      # Implementation of route DSL
+      # @param [String] method HTTP method
+      # @param [String, Regexp] path path definition
+      # @param [Proc] block process to run when route matched
+      # @return [nil] nil
+      def add_route(method, path, block)
+        # Argument check
+        raise ArgumentError unless path.is_a? String
 
-      # Insert route to routes
-      route = Inori::Route.new(method, path, block)
-      route.middlewares = @scope_middlewares + @temp_middlewares
-      @routes[method] << route
+        # Insert route to routes
+        route = Inori::Route.new(method, path, block)
+        route.middlewares = @scope_middlewares + @temp_middlewares
+        @routes[method] << route
 
-      # Clean up temp middleware
-      @temp_middlewares = []
-      nil
+        # Clean up temp middleware
+        @temp_middlewares = []
+        nil
+      end
     end
   end
 end
