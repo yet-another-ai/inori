@@ -18,8 +18,6 @@ module Inori
     class FrameEnd < StandardError; end
     # Websocket Ping Pong size too large
     class PingPongSizeTooLarge < StandardError; end
-    # Not sending String in EventSource
-    class EventSourceTypeError < StandardError; end
     # Insert a not middleware class to middleware list
     class MiddlewareError < StandardError; end
   end

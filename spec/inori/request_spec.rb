@@ -97,13 +97,6 @@ RSpec.describe Inori::Request do
     expect(request.method).to eq(:WEBSOCKET)
   end
 
-  it 'parse eventsource upgrade' do
-    data = "GET / HTTP/1.1\r\nAccept: text/event-stream\r\n\r\n"
-    request = described_class.new
-    request.parse(data)
-    expect(request.method).to eq(:EVENTSOURCE)
-  end
-
   it 'parses all methods' do
     methods = %w[ delete
                   get

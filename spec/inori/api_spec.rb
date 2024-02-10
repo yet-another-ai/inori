@@ -15,6 +15,8 @@ class RawHello < Inori::API
   get '/' do
     'Hello'
   end
+
+  # rubocop:disable Lint/EmptyBlock
   post '/' do
   end
   put '/' do
@@ -31,8 +33,7 @@ class RawHello < Inori::API
   end
   websocket '/' do
   end
-  eventsource '/' do
-  end
+  # rubocop:enable Lint/EmptyBlock
 end
 
 class JSONMiddleware < Inori::Middleware

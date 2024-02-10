@@ -73,13 +73,6 @@ module Inori
       'Server' => "Inori/#{Inori::VERSION}"
     }.freeze
 
-    # Default header for EventSource response
-    EVENTSOURCE_HEADER = {
-      'Content-Type' => 'text-event-stream',
-      'Cache-Control' => 'no-cache',
-      'Connection' => 'keep-alive'
-    }.freeze
-
     # Default header for Websocket response
     WEBSOCKET_HEADER = {
       'Upgrade' => 'websocket',

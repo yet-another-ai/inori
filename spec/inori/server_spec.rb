@@ -192,15 +192,4 @@ RSpec.describe Inori::Server do
       end
     end
   end
-
-  # TODO: Reimplement the EventSource test
-  # describe 'EventSource' do
-  #   it 'should pass Hello World test' do
-  #     Timeout::timeout(1) do
-  #       expect(Typhoeus.get("http://127.0.0.1:8080/eventsource", headers: {
-  #           'Accept' => 'text/event-stream'
-  #       }).body).to eq("data: Hello\ndata: World\n\n")
-  #     end
-  #   end
-  # end
 end

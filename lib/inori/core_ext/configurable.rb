@@ -9,7 +9,7 @@ module Configurable
   # @param [Object] value value to the name
   # @param [Boolean] read_only Generate option= method or not
   # @return [nil] nil
-  def set(option, value = (not_set = true), read_only = false)
+  def set(option, value = (not_set = true), read_only: false)
     raise ArgumentError if not_set
 
     setter = proc { |val| set option, val }

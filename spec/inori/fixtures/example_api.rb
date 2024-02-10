@@ -79,6 +79,7 @@ class ExampleAPI < Inori::API
     end
 
     ws.on :close do
+      # Do nothing
     end
   end
 
@@ -110,10 +111,7 @@ class ExampleAPI < Inori::API
   end
 
   websocket '/websocket/wrong_opcode' do |ws|
-  end
-
-  eventsource '/eventsource' do |es|
-    es.send("Hello\nWorld")
+    # Placeholder
   end
 end
 

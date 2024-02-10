@@ -28,7 +28,6 @@ module Inori
       @parsed = false
       @body_parsed = false
       @is_websocket = false
-      @is_eventsource = false
       @ip = ''
       @port = 0
       @parser = Mizu::Parser.new
@@ -63,7 +62,6 @@ module Inori
       @parsed = false
       @body_parsed = false
       @is_websocket = false
-      @is_eventsource = false
       @parser.reset!
       @params = {}
       @query_params = Hash.new([])
@@ -119,12 +117,6 @@ module Inori
         @is_websocket = true
       end
 
-      # Deal with EventSource
-      if @header['Accept'] == 'text/event-stream'
-        @method = :EVENTSOURCE
-        @is_eventsource = true
-      end
-
       @method = @method.to_sym
       nil
     end
@@ -145,12 +137,6 @@ module Inori
     # @return [Boolean] websocket or not
     def websocket?
       @is_websocket
-    end
-
-    # Syntactic sugar for whether a request is an eventsource request
-    # @return [Boolean] eventsource or not
-    def eventsource?
-      @is_eventsource
     end
   end
 end

@@ -17,7 +17,7 @@ module Inori
       Inori.logger = configure.logger
       @bind = configure.bind
       @port = configure.port
-      @api = (api.is_a? Inori::APIEngine) ? api : Inori::APIEngine.new(api, configure.route_type)
+      @api = api.is_a? Inori::APIEngine ? api : Inori::APIEngine.new(api, configure.route_type)
       @before = configure.before
     end
 
@@ -33,22 +33,15 @@ module Inori
     def start
       return false if running?
 
-      @logger.info "Inori #{Inori::VERSION} is now running on #{bind}:#{port}".blue
       init_socket
+      @logger.info 'Inori is serving...'.blue
       Fiber.schedule do
-        @logger.info 'Inori is booting...'.blue
-        @before.call
-        @logger.info 'Inori is serving...'.blue
-        Fiber.schedule do
-          loop do
-            socket = @server.accept
-            connection = Inori::Connection.new(socket)
-            connection.server_initialize(@api, @logger)
-            connection.listen
-          end
+        loop do
+          conn = Inori::Connection.new(@server.accept)
+          conn.server_initialize(@api, @logger)
+          conn.listen
         end
       end
-      nil
     end
 
     # Stop the Inori server
@@ -70,6 +63,8 @@ module Inori
     private
 
     def init_socket
+      @logger.info "Inori #{Inori::VERSION} is now running on #{bind}:#{port}".blue
+
       @server = Socket.new Socket::AF_INET, Socket::SOCK_STREAM
       @server.reuse_port if Inori::Configure.socket_reuse_port
       @server.bind Addrinfo.tcp @bind, @port

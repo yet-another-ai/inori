@@ -45,13 +45,6 @@ module Inori
           connection.websocket.request = request
           Inori::Sandbox.run(clean_room, route.function, connection.websocket)
           return Inori::Response.new
-        elsif request.eventsource?
-          connection.send_data Inori::Response.new(
-            status: 200,
-            header: Inori::Const::EVENTSOURCE_HEADER
-          )
-          Inori::Sandbox.run(clean_room, route.function, connection.eventsource)
-          return Inori::Response.new
         else
           request = middleware_exec(route.middlewares, clean_room, request)
           return request if request.is_a? Inori::Response # Early stop

@@ -112,8 +112,7 @@ module Inori
                     unsubscribe
                     patch
                     purge
-                    websocket
-                    eventsource].freeze
+                    websocket].freeze
 
       # Magics to fill DSL methods through dynamically class method definition
       METHODS.each do |method|
@@ -123,7 +122,6 @@ module Inori
       end
 
       singleton_class.send :alias_method, :ws, :websocket
-      singleton_class.send :alias_method, :es, :eventsource
 
       private
 

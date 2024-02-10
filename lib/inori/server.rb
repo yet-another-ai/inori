@@ -10,9 +10,7 @@ module Inori
     #   @return [Class] inherited from Inori::API
     # @!attribute websocket
     #   @return [Inori::Websocket] defined websocket instance
-    # @!attribute eventsource
-    #   @return [Inori::EventSource] defined eventsource instance
-    attr_accessor :request, :api, :websocket, :eventsource
+    attr_accessor :request, :api, :websocket
 
     # Define server behaviour
     # @param [Class] api inherited from Inori::API
@@ -23,7 +21,6 @@ module Inori
 
       @request = Inori::Request.new
       @websocket = Inori::Websocket.new(self)
-      @eventsource = Inori::EventSource.new(self)
 
       # Add keep-alive parameters
       @keep_alive_timer = nil
@@ -75,7 +72,7 @@ module Inori
         @logger.warn e.backtrace.join("\n").yellow
       end
 
-      return if @request.websocket? || @request.eventsource?
+      return if @request.websocket?
 
       send_data @response
       proceed_keep_alive
